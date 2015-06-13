@@ -1,0 +1,29 @@
+{
+  "name": "js-unit-tests",
+  "version": "1.0.0",
+  "description": "{{description}}",
+
+  "repository": "git://github.com/liusy182/js-unit-tests.git",
+  "main": "index.js",
+
+  "dependencies": {
+    "hyperquest": "~0.1.0"
+  },
+
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "^0.4.3",
+    "watchify": "^2.1.1"
+  },
+
+   "scripts": {
+    "start": "watchify -o js/bundle.js -v -d js/index.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+
+  "jest": {
+    "rootDir": "./js"
+  }
+}

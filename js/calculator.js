@@ -6,19 +6,15 @@ module.exports = {
 	calculate: function(s){
 		var opArr = this.condense(s, this.split);
 		var num = [];
-		var sign = '';
+		var sign;
 		var result = 0;
-		for(int i in opArr) {
-			if(isNaN(opArr[i]) {
+		for(i in opArr) {
+			if(isNaN(opArr[i])) {
 				//sign
-				if(num.length === 0) {
-					sign = opArr[i];
-				} else {
-					var curNum = convertToNum(num);
-					result = doArithmetic(result, curNum, sign);
-					num = [];
-					sign = opArr[i];
-				}
+				var curNum = convertToNum(num);
+				result = doArithmetic(result, curNum, sign);
+				num = [];
+				sign = opArr[i];
 			} else {
 				//number
 				num.push(opArr[i]);
@@ -28,7 +24,7 @@ module.exports = {
 	},
 	
 	convertToNum: function(arr) {
-
+		return parseInt(arr.join(''));
 	},
 
 	doArithmetic: function(prev, cur, sign) {

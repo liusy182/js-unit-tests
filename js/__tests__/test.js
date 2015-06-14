@@ -21,4 +21,9 @@ describe('test calculator', function() {
   	expect(result).toEqual(['t', 'e', 's', 't']);
   });
 
+  it('test convertToNum', function() {
+    var result = Calculator.convertToNum(['1', '2', '3']);
+    expect(result).toEqual(123);
+  });
+  
 });

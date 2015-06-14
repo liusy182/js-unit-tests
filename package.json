@@ -18,8 +18,8 @@
   },
 
    "scripts": {
-    "start": "watchify -o js/bundle.js -v -d js/index.js",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "start": "watchify -o js/bundle/bundle.js -v -d js/index.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js//bundle/bundle.min.js",
     "test": "jest"
   },
 

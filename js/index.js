@@ -1,8 +1,11 @@
 
+var Calulator = require('./calculator');
 
 module.exports = {
 	
-	plus: function (a, b){
-		return a + b;
-	}
+	calculate: function(s){
+		return Calulator.calculate(s);
+	},
+
+
 };

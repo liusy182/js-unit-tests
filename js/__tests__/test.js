@@ -1,29 +1,38 @@
 
 
 jest.dontMock('../calculator');
+jest.dontMock('../utils');
 
-describe('test calculator', function() {
+describe('calculator', function() {
 
-  var Calculator = require('../calculator');
+  var Calculator;
+  var Utils;
   
-  it('test condense', function() {
-  	var result = Calculator.condense('1 + 2');
-  	expect(result).toBe('1+2');
+  beforeEach(function() {
+     Calculator = require('../calculator');
+     Utils = require('../utils');
   });
 
-  it('test condense with callback', function() {
-  	var result = Calculator.condense('1 + 2', Calculator.split);
-  	expect(result).toEqual(['1', '+', '2']);
-  });
+  it('', function() {
 
-  it('test split', function() {
-  	var result = Calculator.split('test');
-  	expect(result).toEqual(['t', 'e', 's', 't']);
-  });
-
-  it('test convertToNum', function() {
     var result = Calculator.convertToNum(['1', '2', '3']);
     expect(result).toEqual(123);
   });
   
+  it('', function() {
+    jest.mock('../utils');
+    Utils.removeSpaces = jest.genMockFn();
+    Utils.split = jest.genMockFn();
+    Calculator.convertStringToArr("12 + 13");
+    expect(Utils.removeSpaces).toBeCalled();
+    expect(Utils.split).toBeCalled();
+    jest.dontMock('../utils');
+  });
+
+  it('', function() {
+    Calculator.calculate('1 + 2');
+    var result = Calculator.getResult();
+    expect(result).toEqual(3);
+  });
+
 });

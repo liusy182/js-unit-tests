@@ -51,8 +51,10 @@
 	],
 	"file_history":
 	[
-		"/C/WS/Git/js-unit-tests/js/__tests__/test.js",
+		"/C/WS/Git/flux/examples/flux-chat/js/stores/__tests__/UnreadThreadStore-test.js",
 		"/C/WS/Git/js-unit-tests/js/calculator.js",
+		"/C/WS/Git/js-unit-tests/js/utils.js",
+		"/C/WS/Git/js-unit-tests/js/__tests__/test.js",
 		"/C/WS/Git/js-unit-tests/package.json",
 		"/C/WS/Git/js-unit-tests/js/index.js",
 		"/C/WS/Git/message-app/.gitignore",
@@ -104,6 +106,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"doari",
+			"mock",
+			"pre",
 			"page",
 			"hChromeProcess",
 			"waitforpro"

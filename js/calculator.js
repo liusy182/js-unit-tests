@@ -1,18 +1,28 @@
 
+var Utils = require('./utils');
 
+var _result = 0;
 
 module.exports = {
 	
+	getResult: function() {
+		return _result;
+	},
+
+	resetResult: function() {
+		_result = 0;
+	},
+
 	calculate: function(s){
-		var opArr = this.condense(s, this.split);
+		var opArr = this.convertStringToArr(s);
 		var num = [];
 		var sign;
-		var result = 0;
+		this.resetResult();
 		for(i in opArr) {
 			if(isNaN(opArr[i])) {
 				//sign
-				var curNum = convertToNum(num);
-				result = doArithmetic(result, curNum, sign);
+				var curNum = this.convertToNum(num);
+				this.doArithmetic(curNum, sign);
 				num = [];
 				sign = opArr[i];
 			} else {
@@ -20,48 +30,38 @@ module.exports = {
 				num.push(opArr[i]);
 			}
 		}
-		return result;
+		if(num.length > 0) {
+			var curNum = this.convertToNum(num);
+			this.doArithmetic(curNum, sign);
+		}
 	},
 	
+	convertStringToArr: function(s) {
+		return Utils.split(Utils.removeSpaces(s));
+	},
+
 	convertToNum: function(arr) {
 		return parseInt(arr.join(''));
 	},
 
-	doArithmetic: function(prev, cur, sign) {
-		var result;
+	doArithmetic: function(num, sign) {
 		switch(sign){
 			case '+':
-				result = pre + cur;
+				_result += num;
 				break;
 			case '-':
-				result = pre - cur;
+				_result -= num;
 				break;
 			case '*':
-				result = pre * cur;
+				_result *= num;
 				break;
 			case '/':
-				result = pre / cur;
+				_result /= num;
 				break;
 			default: 
-				result = cur;
+				_result = num;
 				break;
 		}
-		return result;
-	},
-
-	condense: function(s, callback) {
-		var result = s.replace(/ /g, '');
-		if(callback){
-			return callback(result);
-		} else {
-			return result;
-		}
-	},
-
-	split: function(s){
-		return s.split('');
-	},
-
-
+	}
 	
 };

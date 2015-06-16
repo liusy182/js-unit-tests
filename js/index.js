@@ -1,11 +1,12 @@
+var $ = require('jquery');
+var Calculator = require('./calculator');
 
-var Calulator = require('./calculator');
-
-module.exports = {
-	
-	calculate: function(s){
-		return Calulator.calculate(s);
-	},
-
-
-};
+module.exports = (function () {
+ 	$(document).ready(
+ 		$('button').click(function() {
+ 			Calculator.calculate($('#input').val());
+ 			var output = Calculator.getResult();
+ 			$('#output').val(output);
+ 		})
+ 	);
+})();
